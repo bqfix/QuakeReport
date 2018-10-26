@@ -12,8 +12,9 @@ public class Earthquake {
     private long mTime;
     private String mConvertedDate;
     private String mConvertedTime;
+    private String mURL;
 
-    Earthquake(double magnitude, String location, long time){
+    Earthquake(double magnitude, String location, long time, String url){
         //Set mMagnitude to be a double with 1 decimal place
 
         mMagnitude = magnitude;
@@ -33,7 +34,6 @@ public class Earthquake {
 
         mTime = time;
         //Convert mTime long into standard DateTime format
-
         //New Date
         Date date = new java.util.Date(mTime);
         //Formatting of date
@@ -43,6 +43,8 @@ public class Earthquake {
         // sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT-4"));
         mConvertedDate = formattedDate.format(date);
         mConvertedTime = formattedTime.format(date);
+
+        mURL = url;
     }
 
     public double getMagnitude() {
@@ -67,5 +69,9 @@ public class Earthquake {
 
     public String getConvertedTime(){
         return mConvertedTime;
+    }
+
+    public String getURL() {
+        return mURL;
     }
 }
