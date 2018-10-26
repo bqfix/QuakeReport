@@ -1,25 +1,69 @@
 package com.example.android.quakereport;
 
-public class Earthquake {
-    private String mMagnitude;
-    private String mLocation;
-    private String mTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    Earthquake(String magnitude, String location, String time){
+public class Earthquake {
+    private double mMagnitude;
+    private String mFullLocation;
+    private String mSecondaryLocation;
+    private String mPrimaryLocation;
+    private long mTime;
+    private String mConvertedDate;
+    private String mConvertedTime;
+
+    Earthquake(double magnitude, String location, long time){
         mMagnitude = magnitude;
-        mLocation = location;
+        mFullLocation = location;
         mTime = time;
+
+        //Split mFullLocation into Primary and Secondary locations
+        if (mFullLocation.contains("of")){
+            //Find position of Primary Location by indexing "of" and adding 2
+            int primaryLocationStart = mFullLocation.indexOf("of") + 3;
+
+            mSecondaryLocation = mFullLocation.substring(0,primaryLocationStart);
+            mPrimaryLocation = mFullLocation.substring(primaryLocationStart);
+        } else {
+            mSecondaryLocation = "Near";
+            mPrimaryLocation = mFullLocation;
+        }
+
+
+        //Convert mTime long into standard DateTime format
+
+        //New Date
+        Date date = new java.util.Date(mTime);
+        //Formatting of date
+        SimpleDateFormat formattedDate = new java.text.SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formattedTime = new java.text.SimpleDateFormat("HH:mm a");
+        //Give a timezone reference for formatting (currently unused)
+        // sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT-4"));
+        mConvertedDate = formattedDate.format(date);
+        mConvertedTime = formattedTime.format(date);
     }
 
-    public String getMagnitude() {
+    public double getMagnitude() {
         return mMagnitude;
     }
 
-    public String getLocation() {
-        return mLocation;
+    public String getSecondaryLocation() {
+        return mSecondaryLocation;
     }
 
-    public String getTime() {
+    public String getPrimaryLocation() {
+        return mPrimaryLocation;
+    }
+
+    public long getTime() {
         return mTime;
+    }
+
+    public String getConvertedDate() {
+        return mConvertedDate;
+    }
+
+    public String getConvertedTime(){
+        return mConvertedTime;
     }
 }

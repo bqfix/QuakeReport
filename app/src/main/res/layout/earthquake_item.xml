@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <variable name = "earthquake" type="com.example.android.quakereport.Earthquake"/>
+
+        <variable
+            name="earthquake"
+            type="com.example.android.quakereport.Earthquake" />
     </data>
 
     <LinearLayout
@@ -16,22 +20,53 @@
             android:id="@+id/magnitude_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="7.5"/>
+            android:layout_weight=".5"
+            tools:text="7.5" />
 
-        <TextView
-            android:id="@+id/location_view"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="San Francisco"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/time_view"
+            <TextView
+                android:id="@+id/secondary_location_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                tools:text="25mi West of" />
+
+            <TextView
+                android:id="@+id/primary_location_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                tools:text="San Francisco" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="Feb 2, 2016" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/date_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                tools:text="Feb 2, 2016" />
+
+            <TextView
+                android:id="@+id/time_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                tools:text="11:03 PM" />
+
+        </LinearLayout>
 
 
     </LinearLayout>
