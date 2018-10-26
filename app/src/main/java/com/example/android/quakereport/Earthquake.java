@@ -1,5 +1,6 @@
 package com.example.android.quakereport;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,10 +14,11 @@ public class Earthquake {
     private String mConvertedTime;
 
     Earthquake(double magnitude, String location, long time){
-        mMagnitude = magnitude;
-        mFullLocation = location;
-        mTime = time;
+        //Set mMagnitude to be a double with 1 decimal place
 
+        mMagnitude = magnitude;
+
+        mFullLocation = location;
         //Split mFullLocation into Primary and Secondary locations
         if (mFullLocation.contains("of")){
             //Find position of Primary Location by indexing "of" and adding 2
@@ -29,7 +31,7 @@ public class Earthquake {
             mPrimaryLocation = mFullLocation;
         }
 
-
+        mTime = time;
         //Convert mTime long into standard DateTime format
 
         //New Date
